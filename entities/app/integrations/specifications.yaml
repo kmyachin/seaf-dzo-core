@@ -14,6 +14,12 @@ entities:
                   title: Уникальный идентификатор спецификации интеграции
                   type: string
                   format: uuid
+                owns:
+                  title: Владелец спецификации
+                  $ref: "#/$rels/components.component"
+                is_public:
+                  title: Является ли интерфейс публичным ?
+                  type: boolean
                 interface:
                   title: Интерфейс взаимодействия
                   type: string
