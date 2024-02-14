@@ -28,6 +28,14 @@ entities:
             style:
               margin: 4px
               border: true
+          interfaces:
+            title: Публичные интерфейсы
+            presentation: interfaces
+            align: ">"
+            order: 20
+            style:
+              margin: 4px
+              border: true
         type: mkr-grid
         source: >
           (

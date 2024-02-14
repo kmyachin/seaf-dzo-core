@@ -1,0 +1,31 @@
+entities:
+  seaf.app.services:
+    presentations:
+      interfaces:
+        title: Публичные интерфейсы прикладного сервиса
+        type: markdown
+        template: templates/summary_components.md
+        params:
+          type: object
+          properties:
+            seaf-app-service-id:
+              title: Идентификатор прикладного сервиса
+              type: string
+          required:
+            - seaf-app-service-id
+        origin: seaf.app.services.full
+        source: >
+          (
+              $service_id := $params."seaf-app-service-id";
+              $ctx := $;
+              $lookup($ctx."seaf.app.services", $service_id).(
+                  $data := [$.interfaces.$spread().({
+                      "content": $.*.title,
+                      "link": "(/entities/seaf.app.integration_specifications/blank?seaf-int-spec-id=" & $.$keys() & ")"
+                  })];
+                  {
+                    "title": "Публичные спецификации",
+                    "data" : $data
+                  }
+              );
+          )

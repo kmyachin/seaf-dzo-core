@@ -24,11 +24,24 @@ datasets:
           $result := $map($components, function($v) {(
                   $service := $v.*.sber.is_component_of;
                   $result := { $service : { "components" : $v }};
-
                 )}
             );
+
+          
           $appendToServices := function($v, $to) { $services := $mergedeep([$to, $v]) };
           $services := $reduce($result, $appendToServices, $services);
       
+          $interfaces := $."seaf.app.integration_specifications".$spread()[*.sber.owns and *.sber.is_public];
+          $services_interfaces := $map($interfaces, function($v) {(
+                $service := $lookup($components, $v.*.sber.owns).sber.is_component_of;
+                $result := { $service: {"interfaces": $v }};
+            )}
+          );
+
+          $log($services_interfaces, "interfaces");
+
+          $services := $reduce($services_interfaces, $appendToServices, $services);
+
           { "seaf.app.services": $services };
+
       )
