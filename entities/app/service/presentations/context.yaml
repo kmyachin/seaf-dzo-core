@@ -18,8 +18,9 @@ entities:
           (
               $service_id := $params."seaf-app-service-id";
               $ctx := $;
+              $c_service := {$service_id : $lookup($ctx."seaf.app.services", $service_id)};
               $context_integrations := [$ctx."seaf.app.integrations".$spread()[*.to = $service_id or *.from = $service_id]];
-              $context_services := [$ctx."seaf.app.services".$spread()[$.$keys() in $distinct($context_integrations.([*.to, *.from]))]];
+              $context_services := $append([$c_service], [$ctx."seaf.app.services".$spread()[$.$keys() in $distinct($context_integrations.([*.to, *.from]))]]);
               {
                 "services" : $context_services.($merge([$.*, {"id": $.$keys()}])),
                 "integrations": $context_integrations.($merge([$.*, {"id": $.$keys()}]))
