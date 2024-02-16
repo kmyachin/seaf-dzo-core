@@ -3,3 +3,4 @@ imports:
   - registry.yaml
   - summary.yaml
   - components.yaml
+  - context.yaml

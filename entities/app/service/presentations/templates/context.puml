@@ -1,0 +1,43 @@
+!pragma horizontalLineBetweenDifferentPackageAllowed
+!pragma layout elk
+
+allowmixing
+
+skinparam {
+    titleFontSize 40
+    wrapWidth 150
+    maxMessageSize 200
+    defaultfontname Arial
+    roundCorner 10
+    linetype ortho
+    nodesep 20
+    ranksep 20
+    'shadowing true
+    stereotypefontsize 8
+}
+
+hide circle
+hide empty members
+
+skinparam class {
+    wrapWidth 250
+    fontsize 14
+    fontsize bold
+    borderthickness 1
+    attributefontsize 11
+    bordercolor #4e4948
+}
+
+set namespaceSeparator none
+
+@startuml
+
+{{#services}}
+  class "{{title}}" as {{id}}
+{{/services}}
+
+{{#integrations}}
+  {{from}} -down- {{to}} : {{title}}
+{{/integrations}}
+
+@enduml

@@ -1,0 +1,27 @@
+entities:
+  seaf.app.services:
+    presentations:
+      context:
+        title: Контекс прикладного сервиса
+        params:
+          type: object
+          properties:
+            seaf-app-service-id:
+              title: Идентификатор прикладного сервиса
+              type: string
+          required:
+            - seaf-app-service-id
+        type: plantuml
+        template: templates/context.puml
+        origin: seaf.app.services.full
+        source: >
+          (
+              $service_id := $params."seaf-app-service-id";
+              $ctx := $;
+              $context_integrations := [$ctx."seaf.app.integrations".$spread()[*.to = $service_id or *.from = $service_id]];
+              $context_services := [$ctx."seaf.app.services".$spread()[$.$keys() in $distinct($context_integrations.([*.to, *.from]))]];
+              {
+                "services" : $context_services.($merge([$.*, {"id": $.$keys()}])),
+                "integrations": $context_integrations.($merge([$.*, {"id": $.$keys()}]))
+              }
+          )
