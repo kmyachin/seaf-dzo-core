@@ -3,5 +3,6 @@ imports:
   - registry.yaml
   - summary.yaml
   - components.yaml
-  - context.yaml
+  - contexts.yaml
+  - app_context.yaml
   - details_context.yaml

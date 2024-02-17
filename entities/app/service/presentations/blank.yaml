@@ -28,22 +28,15 @@ entities:
             style:
               margin: 4px
               border: true
-          context:
-            title: Прикладной сервис
-            presentation: context
+          contexts:
+            title: Контексты
+            presentation: contexts
             align: ">"
             order: 10
             style:
               margin: 4px
               border: true
-          details_context:
-            title: Зависимости компонент прикладного сервиса
-            presentation: details_context
-            align: ">"
-            order: 20
-            style:
-              margin: 4px
-              border: true
+              min-height: 300px
         type: mkr-grid
         source: >
           (

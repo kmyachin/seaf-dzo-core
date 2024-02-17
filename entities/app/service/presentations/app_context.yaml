@@ -1,7 +1,7 @@
 entities:
   seaf.app.services:
     presentations:
-      context:
+      app_context:
         title: Контекс прикладного сервиса
         params:
           type: object

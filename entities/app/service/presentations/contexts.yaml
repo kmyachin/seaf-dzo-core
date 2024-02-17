@@ -1,0 +1,32 @@
+entities:
+  seaf.app.services:
+    presentations:
+      contexts:
+        title: Контексты прикладного сервиса
+        params:
+          type: object
+          properties:
+            seaf-app-service-id:
+              title: Идентификатор прикладного сервиса
+              type: string
+          required:
+            - seaf-app-service-id
+        type: mkr-select
+        source: >
+          (
+            $app_service_id := $params."seaf-app-service-id";
+            $append(
+              [
+                {
+                  "title": "SELF",
+                  "src": "@entity/seaf.app.services/app_context?seaf-app-service-id=" & $app_service_id
+                }
+              ],
+              [
+                {
+                  "title": "Зависимости компонент прикладного сервиса",
+                  "src": "@entity/seaf.app.services/details_context?seaf-app-service-id=" & $app_service_id
+                }
+              ]
+            )
+          )
