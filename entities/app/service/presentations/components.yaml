@@ -1,6 +1,16 @@
 entities:
   seaf.app.services:
     presentations:
+      blank:
+        widgets:
+          components:
+            title: Состоит из компонент
+            presentation: components
+            align: "<"
+            order: 20
+            style:
+              margin: 4px
+              border: true
       components:
         title: Компоненты прикладного сервиса
         type: markdown

@@ -11,32 +11,6 @@ entities:
               type: string
           required:
             - seaf-app-service-id
-        widgets:
-          summary:
-            title: Сводка по прикладному сервису
-            presentation: summary
-            align: "<"
-            order: 10
-            style:
-              margin: 4px
-              border: true
-          components:
-            title: Состоит из компонент
-            presentation: components
-            align: "<"
-            order: 20
-            style:
-              margin: 4px
-              border: true
-          contexts:
-            title: Контексты
-            presentation: contexts
-            align: ">"
-            order: 10
-            style:
-              margin: 4px
-              border: true
-              min-height: 300px
         type: mkr-grid
         source: >
           (

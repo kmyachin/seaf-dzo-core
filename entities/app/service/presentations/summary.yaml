@@ -1,6 +1,17 @@
 entities:
   seaf.app.services:
     presentations:
+      blank:
+        widgets:
+          summary:
+            title: Сводка по прикладному сервису
+            presentation: summary
+            icon: settings
+            align: "<"
+            order: 10
+            style:
+              margin: 4px
+              border: true
       summary:
         title: Сводка по прикладному сервису
         params:

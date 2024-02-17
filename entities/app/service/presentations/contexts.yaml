@@ -1,6 +1,18 @@
 entities:
   seaf.app.services:
     presentations:
+      blank:
+        widgets:
+          contexts:
+            title: Контексты
+            icon: description
+            presentation: contexts
+            align: ">"
+            order: 10
+            style:
+              margin: 4px
+              border: true
+              min-height: 300px
       contexts:
         title: Контексты прикладного сервиса
         params:
