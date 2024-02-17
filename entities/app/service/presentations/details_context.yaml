@@ -1,0 +1,34 @@
+entities:
+  seaf.app.services:
+    presentations:
+      details_context:
+        title: Контекст зависимостей
+        params:
+          type: object
+          properties:
+            seaf-app-service-id:
+              title: Идентификатор прикладного сервиса
+              type: string
+          required:
+            - seaf-app-service-id
+        type: plantuml
+        template: templates/detail_template.puml
+        origin: seaf.app.services.full
+        source: >
+          (
+              $id := "dtls-context-app-service." & $service_id;
+              $service_id := $params."seaf-app-service-id";                    
+              $manifest := $ ~> | $ | $mergedeep([$, {
+                                                       "contexts": 
+                                                        {
+                                                         $id :
+                                                         {
+                                                           "title": $lookup($."seaf.app.services", $service_id).title,
+                                                           "components": $lookup($."seaf.app.services", $service_id).components.$keys()
+                                                         }
+                                                         }
+                                                     }]) |;
+              $params := {"dh-context-id": $id};
+
+              $eval($manifest.entities.contexts.presentations.plantuml.source, $merge([$manifest, $params]));
+          )

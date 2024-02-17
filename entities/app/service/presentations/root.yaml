@@ -4,3 +4,4 @@ imports:
   - summary.yaml
   - components.yaml
   - context.yaml
+  - details_context.yaml

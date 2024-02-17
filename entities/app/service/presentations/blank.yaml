@@ -23,14 +23,22 @@ entities:
           components:
             title: Состоит из компонент
             presentation: components
+            align: "<"
+            order: 20
+            style:
+              margin: 4px
+              border: true
+          context:
+            title: Прикладной сервис
+            presentation: context
             align: ">"
             order: 10
             style:
               margin: 4px
               border: true
-          context:
-            title: Контекст прикладного сервиса
-            presentation: context
+          details_context:
+            title: Зависимости компонент прикладного сервиса
+            presentation: details_context
             align: ">"
             order: 20
             style:
